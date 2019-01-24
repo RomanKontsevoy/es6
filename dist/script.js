@@ -27,3 +27,9 @@ var staticLanguages = ["C", "C++", "Java"];
 var dynamicLanguages = ["Javascript", "PHP", "Ruby"];
 var languages = [].concat(staticLanguages, ["C#"], dynamicLanguages, ["Python"]);
 console.log(languages);
+
+function greet(name) {
+  console.log("Hallo, ".concat(name).toUpperCase());
+}
+
+greet("roma");

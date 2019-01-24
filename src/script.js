@@ -23,3 +23,8 @@ let languages = [...staticLanguages, "C#", ...dynamicLanguages, "Python"];
 
 console.log(languages);
 
+function greet(name) {
+    console.log(`Hallo, ${name}`.toUpperCase());
+}
+
+greet("roma");
