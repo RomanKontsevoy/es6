@@ -23,3 +23,7 @@ function c(ent) {
 ;
 var PI = Math.PI;
 c(PI);
+var staticLanguages = ["C", "C++", "Java"];
+var dynamicLanguages = ["Javascript", "PHP", "Ruby"];
+var languages = [].concat(staticLanguages, ["C#"], dynamicLanguages, ["Python"]);
+console.log(languages);

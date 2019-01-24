@@ -16,3 +16,10 @@ function c(ent) {
 const PI = Math.PI;
 
 c(PI);
+
+let staticLanguages = ["C", "C++", "Java"];
+let dynamicLanguages = ["Javascript", "PHP", "Ruby"];
+let languages = [...staticLanguages, "C#", ...dynamicLanguages, "Python"];
+
+console.log(languages);
+
