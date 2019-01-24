@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .btn-like {
+            align-items: flex-start;
+            text-align: center;
+            cursor: default;
+            color: buttontext;
+            background-color: buttonface;
+            box-sizing: border-box;
+            padding: 2px 6px 3px;
+            border-width: 2px;
+            border-style: outset;
+            border-color: buttonface;
+            border-image: initial;
+            cursor: pointer;
+            display: inline-block;
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer */
+            -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+            -webkit-user-select: none; /* Chrome, Safari, and Opera */
+            -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+            user-select: none;
+        }
+
+        .btn-like:hover {
+            opacity: .9;
+        }
+
+        .btn-like:active {
+            border-style: inset;
+        }
+    </style>
+
+</head>
+<body>
+
+<textarea id="text" cols="80" rows="20">
+    позволяет управлять воспроизведением аудио и "видео". Отметим "наиболее" -- важные свойства, которые могут нам пригодиться для настройки этих элементов св. Адо о. Авав архиеп. Rkbvtyn апп. Авава
+
+   А. Пушкин
+
+</textarea>
+
+<p class="btn-like" id="typogr">Подготовить для публикации</p>
+<p class="btn-like" id="selection">Узнать selection</p>
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="dist/script.js"></script>
+<script src="dist/optimize_text.js"></script>
+<script src="dist/typograph.js"></script>
+<script>
+    $("#text").typograf({
+        // leftQuote: "„",
+        // rightQuote: "“",
+        handler: "#typogr",
+    });
+</script>
+
+</body>
+</html>
