@@ -191,4 +191,3 @@ window.addEventListener('resize', () => {
     initCanvas();
 });
 
-
