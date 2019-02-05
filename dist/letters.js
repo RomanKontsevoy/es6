@@ -74,9 +74,10 @@ function getTanD(deg = 65) {
 }
 
 class Letter {
-  constructor(x = 50, y = 100) {
+  constructor(x = 50, y = 100, dash = false) {
     this.x = x;
     this.y = y;
+    this.dash = dash;
   }
 
   letterStyles() {
@@ -86,7 +87,14 @@ class Letter {
 
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    if (this.dash) ctx.setLineDash([1, 4]);
+
+    if (this.dash) {
+      ctx.setLineDash([1, 4]);
+    } else {
+      ctx.setLineDash([]);
+    }
+
+    ;
   }
 
   drawKFirst() {
@@ -102,9 +110,8 @@ class Letter {
 }
 
 class Kletter extends Letter {
-  constructor(x, y, dash = false) {
-    super(x, y);
-    this.dash = dash;
+  constructor(x, y, dash) {
+    super(x, y, dash);
   }
 
   drawFirstRight() {
@@ -136,9 +143,8 @@ class Kletter extends Letter {
 }
 
 class Nletter extends Letter {
-  constructor(x, y, dash = false) {
-    super(x, y);
-    this.dash = dash;
+  constructor(x, y, dash) {
+    super(x, y, dash);
   }
 
   drawRight() {
@@ -165,30 +171,38 @@ class Nletter extends Letter {
 
 let canvas = document.getElementById('canv');
 let ctx = canvas.getContext('2d');
+let letter = document.getElementById('letter');
 
 function initCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   let markup = new Markup(canvas.width, canvas.height);
+  letter = document.getElementById('letter');
   markup.init(50);
 
   for (let i = 0; i < canvas.height - 160; i += 80) {
     for (let j = 0; j < canvas.width - 180; j += 70) {
-      let letter;
+      let letterDraw;
 
-      if (j % 20 === 0) {
-        console.log(j % 20);
-        letter = j > 250 ? new Kletter(40 + j, 100 + i, true) : new Kletter(40 + j, 100 + i, false);
-      } else {
-        console.log(j % 20);
-        letter = j > 250 ? new Nletter(40 + j, 100 + i, true) : new Nletter(40 + j, 100 + i, false);
+      switch (letter.value) {
+        case "К":
+          letterDraw = j > 200 ? new Kletter(40 + j, 100 + i, true) : new Kletter(40 + j, 100 + i, false);
+          break;
+
+        case "Н":
+          letterDraw = j > 200 ? new Nletter(40 + j, 100 + i, true) : new Nletter(40 + j, 100 + i, false);
+          break;
       }
 
-      letter.drawLetter();
+      letterDraw.drawLetter();
     }
   }
 }
 
+letter.addEventListener('input', e => {
+  e.preventDefault();
+  initCanvas();
+});
 initCanvas();
 window.addEventListener('resize', () => {
   initCanvas();

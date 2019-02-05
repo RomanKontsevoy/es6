@@ -14,6 +14,13 @@
             margin: auto;
             display: block;
         }
+
+        #letter {
+            position: fixed;
+            right: 10px;
+            top: 50%;
+            z-index: 10;
+        }
     </style>
 
 </head>
@@ -21,6 +28,10 @@
 
 <canvas id="canv"></canvas>
 
+<select name="letter" id="letter">
+    <option value="К">К</option>
+    <option value="Н">Н</option>
+</select>
 
 <script src="dist/letters.js"></script>
 
