@@ -66,6 +66,19 @@ function () {
       ctx.closePath();
     }
   }, {
+    key: "drawObliqueLine",
+    value: function drawObliqueLine(x1, y1, x2, y2) {
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.lineWidth = 1; // толщина линии
+
+      ctx.strokeStyle = "#000"; // цвет линии
+
+      ctx.stroke();
+      ctx.closePath();
+    }
+  }, {
     key: "drawObliqueLines",
     value: function drawObliqueLines(x) {
       for (var i = 0; i < this.width + this.height * getTanD(25); i += 120) {
@@ -86,19 +99,6 @@ function () {
       this.drawHorisontalLines(y);
       this.drawRightField();
       this.drawObliqueLines(120);
-    }
-  }], [{
-    key: "drawObliqueLine",
-    value: function drawObliqueLine(x1, y1, x2, y2) {
-      ctx.beginPath();
-      ctx.moveTo(x1, y1);
-      ctx.lineTo(x2, y2);
-      ctx.lineWidth = 1; // толщина линии
-
-      ctx.strokeStyle = "#000"; // цвет линии
-
-      ctx.stroke();
-      ctx.closePath();
     }
   }]);
 
