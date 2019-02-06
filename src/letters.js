@@ -18,7 +18,7 @@ class Markup {
     }
 
     drawHorisontalLines(y) {
-        this.drawOneLine(y)
+        this.drawOneLine(y);
         for (let i = 0; i < this.height - 160; i += 80) {
             this.drawOneLineSet(y + i);
         }
@@ -34,7 +34,7 @@ class Markup {
         ctx.closePath();
     }
 
-    drawObliqueLine(x1, y1, x2, y2) {
+    static drawObliqueLine(x1, y1, x2, y2) {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
@@ -49,7 +49,7 @@ class Markup {
             let x1, y1, x2, y2;
             x1 = x + i;
             y1 = 0;
-            x2 = 0
+            x2 = 0;
             y2 = x1 * getTanD();
             this.drawObliqueLine(x1, y1, x2, y2);
         }
@@ -63,7 +63,7 @@ class Markup {
 }
 
 function getTanD(deg = 65) {
-    var rad = deg * Math.PI / 180;
+    let rad = deg * Math.PI / 180;
     return Math.tan(rad);
 }
 
@@ -80,7 +80,7 @@ class Letter {
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         if (this.dash) {ctx.setLineDash([1, 4])}
-        else {ctx.setLineDash([])};
+        else ctx.setLineDash([])
     }
 
     drawKFirst () {
@@ -120,7 +120,7 @@ class Kletter extends Letter {
         ctx.stroke();
         ctx.beginPath();
         this.drawFirstRight();
-        this.drawSecondRight()
+        this.drawSecondRight();
         ctx.stroke();
         ctx.closePath();
     }
@@ -146,7 +146,39 @@ class Nletter extends Letter {
         this.drawKSecond();
         ctx.stroke();
         ctx.beginPath();
-        this.drawRight()
+        this.drawRight();
+        ctx.stroke();
+        ctx.closePath();
+    }
+}
+
+class Bletter extends Letter {
+    constructor(x, y, dash) {
+        super(x, y, dash);
+    }
+
+    drawTop () {
+        ctx.moveTo(this.x+5, this.y - 35);
+        ctx.quadraticCurveTo(this.x, this.y - 49, this.x + 50 / getTanD(), this.y - 50);
+        ctx.lineTo(this.x + 50 / getTanD() + 25, this.y - 50);
+    }
+
+    drawRight () {
+        ctx.moveTo(this.x + 20 / getTanD(), this.y - 20);
+        ctx.quadraticCurveTo(this.x + 50 / getTanD(), this.y - 35, this.x + 50 / getTanD() + 8, this.y - 20);
+        ctx.quadraticCurveTo(this.x + 50 / getTanD()+8, this.y - 12, this.x + 50 / getTanD()+1, this.y - 5);
+        ctx.quadraticCurveTo(this.x + 50 / getTanD() -15, this.y +5, this.x + 10 / getTanD(), this.y - 10);
+    }
+
+    drawLetter() {
+        ctx.beginPath();
+        this.letterStyles();
+        ctx.moveTo(this.x + 50 / getTanD(), this.y - 50);
+        this.drawKSecond();
+        ctx.stroke();
+        ctx.beginPath();
+        this.drawTop();
+        this.drawRight();
         ctx.stroke();
         ctx.closePath();
     }
@@ -172,6 +204,9 @@ function initCanvas () {
                     break;
                 case "Н":
                     letterDraw = j>200 ? new Nletter(40+j, 100+i, true) : new Nletter(40+j, 100+i, false);
+                    break;
+                    case "Б":
+                    letterDraw = j>200 ? new Bletter(40+j, 100+i, true) : new Bletter(40+j, 100+i, false);
                     break;
             }
             letterDraw.drawLetter();

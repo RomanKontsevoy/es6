@@ -15,11 +15,18 @@
             display: block;
         }
 
-        #letter {
+        #selector {
             position: fixed;
             right: 10px;
-            top: 50%;
+            top: 25%;
             z-index: 10;
+            text-align: center;
+        }
+        h2 {
+            color: red;
+            text-transform: uppercase;
+            font-size: 16px;
+            text-shadow: 2px 2px 0 #fff;
         }
     </style>
 
@@ -28,10 +35,15 @@
 
 <canvas id="canv"></canvas>
 
-<select name="letter" id="letter">
-    <option value="К">К</option>
-    <option value="Н">Н</option>
-</select>
+<section id="selector">
+    <h2>буква</h2>
+    <select name="letter" id="letter">
+        <option value="К">К</option>
+        <option value="Н">Н</option>
+        <option value="Б" selected>Б</option>
+    </select>
+</section>
+
 
 <script src="dist/letters.js"></script>
 
