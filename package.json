@@ -4,17 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src -d dist",
-    "b": "babel src -d dist",
-    "watch": "babel src -d dist -w"
+    "build": "babel src -d docs",
+    "b": "babel src -d docs",
+    "watch": "babel src -d docs -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
     "babel-preset-env": "^1.7.0"
   },
   "dependencies": {
